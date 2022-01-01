@@ -1,0 +1,14 @@
+response.css('.posts a').get() --> gets link the one post title
+response.css('.posts a::text').get() -->getting the just the post name(first link) as a text
+response.css('p::text').re(r'scraping') --> all the instances of 'scraping'
+response.css('p::text').re(r's\w+') -->gives us every word stats with s
+response.css('p::text').re(r'(\w+) you (\w+)') --> gives us every word 'u' in the middle
+response.xpath('//h3') -->all the h3s
+response.xpath('//h3/text()').extract() --> all the h3s in a text
+response.xpath('//*[@id="hs_cos_wrapper_module_1523032069834331"]/div/div/div/div/div[1]/div[2]/div[2]/div/span[2]/a/text()').getall() --> all post set of data
+post = response.css('div.post-item')[0]
+title = post.css('.posts h2 a::text')[0].get() -->first post title
+date = post.css('.posts a::text')[1].get() -->same post's date first link
+author = post.css('.posts a::text')[2].get() --> same post's author second link
+
+scrapy crawwl posts -o posts.json(or csv...)--> make posts json file
